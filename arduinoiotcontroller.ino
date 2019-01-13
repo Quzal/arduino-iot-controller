@@ -44,11 +44,11 @@ void setup() {
   // Connecting to Arduino Iot Controller Server
   webSocket.begin("192.168.1.102", 3000, "/socket.io/?transport=websocket");
   // Login 
-  webSocket.emit("Login", "{\"email\":\"abc8\",\"password\":\"4326\"}");
+  webSocket.emit("Login", "{\"email\":\"enter_username\",\"password\":\"enter_password\"}");
   // Listen For Login Response
   webSocket.on("Login", getloginresponse);
   // Listen From Controller
-  webSocket.on("abc8:fan2",fan2);
+  webSocket.on("username:controllerid",fan2);
  
 
 }
