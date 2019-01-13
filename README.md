@@ -20,7 +20,7 @@ Arduino Iot Controller , a Chrome Extension for controlling various microcontrol
 ### Step 1 
 Add <a href="">Arduino IOT Controller</a> Extension to Chrome
 ### Step 2
-Download Arduino Library from Library Manager: <a href="">SocketIoClient by Vincent Wyszynski</a>
+Download Arduino Library from Library Manager: <a href="https://www.arduinolibraries.info/libraries/socket-io-client">SocketIoClient by Vincent Wyszynski</a>
  
  
 ![library](https://github.com/Quzal/arduino-iot-controller/blob/master/SocketIoLib.png?raw=true)
