@@ -55,4 +55,36 @@ const char* password = "password";                   // Enter Password
 ### Step 2
 Connect Board to Arduino IOT Controller Server
 
+```javascript
+  // Connecting to Arduino Iot Controller Server
+  webSocket.begin("192.168.1.102", 3000, "/socket.io/?transport=websocket");
+```
+### Step 3
+Login From Board 
+
+```javascript
+  // Login 
+  webSocket.emit("Login", "{\"email\":\"enter_username\",\"password\":\"enter_password\"}");
+```
+Call Listener :
+##### Note: 1st Argument i.e Login is Fixed , 2nd argument is login listener function name
+```javascript
+webSocket.on("Login", getloginresponse);
+```
+Login Listener :
+Add Login Listener Function above void setup()
+
+```javascript
+// Login Listener Function
+void getloginresponse(const char * payload, size_t length) {
+  USE_SERIAL.printf("got message: %s\n", payload);
+}
+```
+### Step 4
+Listen from Controllers:
+##### Note : 1st Argument is yourusername:controllerId , 2nd Argument is listener function name
+```javascript
+// Listen From Controller
+  webSocket.on("username:controllerid",fan2);
+```
 
