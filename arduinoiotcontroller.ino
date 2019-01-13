@@ -2,19 +2,18 @@
 #include <SocketIoClient.h>
 SocketIoClient webSocket;
 
-const char* ssid     = "Maggi";
-const char* password = "foxbox2345";
+const char* ssid     = "ssid";
+const char* password = "password";
 
 #define USE_SERIAL Serial
-void connecta(const char * payload, size_t length) {
-  USE_SERIAL.printf("got message: %s\n", payload);
- 
 
+// Login Listener Function
+void getloginresponse(const char * payload, size_t length) {
+  USE_SERIAL.printf("got message: %s\n", payload);
 }
-void arduino(const char * payload, size_t length) {
+// Controller Listener Function
+void fan2(const char * payload, size_t length) {
   USE_SERIAL.printf("got message: %s\n", payload);
- 
-
 }
 void setup() {
 
@@ -42,10 +41,14 @@ void setup() {
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
  
+  // Connecting to Arduino Iot Controller Server
   webSocket.begin("192.168.1.102", 3000, "/socket.io/?transport=websocket");
+  // Login 
   webSocket.emit("Login", "{\"email\":\"abc8\",\"password\":\"4326\"}");
-  webSocket.on("Login", connecta);
-  webSocket.on("abc8:fan2",arduino);
+  // Listen For Login Response
+  webSocket.on("Login", getloginresponse);
+  // Listen From Controller
+  webSocket.on("abc8:fan2",fan2);
  
 
 }
