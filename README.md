@@ -27,13 +27,32 @@ Download Arduino Library from Library Manager: <a href="">SocketIoClient by Vinc
 ## Setting Up Code
 Copy Example Code from <a href="https://github.com/Quzal/arduino-iot-controller/blob/master/arduinoiotcontroller.ino">here</a>
 
-###Step 1
+### Step 1
 Connect board to Wifi
 
 ```javascript
 const char* ssid     = "ssid";                       // Enter Ssid
 const char* password = "password";                   // Enter Password
 ```
-###Step 2
+
+```javascript
+ Serial.print("Connecting to ");
+  Serial.println(ssid);
+  
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
+  
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println("");
+  Serial.println("WiFi connected");  
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+  ```
+### Step 2
 Connect Board to Arduino IOT Controller Server
+
 
