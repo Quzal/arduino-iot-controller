@@ -42,7 +42,7 @@ void setup() {
   Serial.println(WiFi.localIP());
  
   // Connecting to Arduino Iot Controller Server
-  webSocket.begin("192.168.1.102", 3000, "/socket.io/?transport=websocket");
+  webSocket.begin("iotcontroller.herokuapp.com");
   // Login 
   webSocket.emit("Login", "{\"email\":\"enter_username\",\"password\":\"enter_password\"}");
   // Listen For Login Response
