@@ -57,7 +57,7 @@ Connect Board to Arduino IOT Controller Server
 
 ```javascript
   // Connecting to Arduino Iot Controller Server
-  webSocket.begin("192.168.1.102", 3000, "/socket.io/?transport=websocket");
+  webSocket.begin("iotcontroller.herokuapp.com");
 ```
 ### Step 3
 Login From Board 
